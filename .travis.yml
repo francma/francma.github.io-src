@@ -1,0 +1,19 @@
+language: python
+python:
+- '3.6'
+branches:
+  only:
+  - master
+install:
+- pip install pelican ghp-import markdown
+script:
+- make publish
+deploy:
+  provider: pages
+  repo: francma/francma.github.io
+  target_branch: master
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: output
+  on:
+    branch: master
